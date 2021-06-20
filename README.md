@@ -20,4 +20,4 @@ How to install?
 - creates a folder "text_encryptor" in your desktop, download the 7 files ( .html and .js ) into it.
 - just open the html file using your internet browser.
 
-![image](https://user-images.githubusercontent.com/32192638/122661232-8925a500-d1ba-11eb-8bb0-c7bc6514513d.png)
+![image](https://user-images.githubusercontent.com/32192638/122661253-e0c41080-d1ba-11eb-83e8-1b0d10a4da1a.png)
