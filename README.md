@@ -1,4 +1,8 @@
 # text_encryptor
+
+[Text Encryption](https://wingsmaker.github.io/crypto/crypto.html)
+
+
 Wrote my own webapp for text encryption such that you can share a QR code of the encryption key.
 No need internet access, clean codes.
 Can be used for those company laptop with restricted access.
