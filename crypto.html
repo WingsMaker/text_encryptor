@@ -21,6 +21,7 @@
 <div id="outdiv">passphrase:
 <div id="result"></div>
 <input type="file" id="fn" onchange="handleFiles(this.files)"/></div><br />
+<input type="button" onClick="reset()" value="Clear"/>
 <input type="button" onClick="encryption()" value="Encrypt"/>
 <input type="button" onClick="decryption()" value="Decrypt"/>
 <input type="button" onClick="definekey()" value="Keypass"/>	  
@@ -33,6 +34,27 @@ var codedString = "";
 var msg = "";
 var keypass = "passwordkey";
 document.getElementById("result").innerHTML = keypass ;
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const keystring = urlParams.get('key')
+const dectxt = urlParams.get('dec')
+const enctxt = urlParams.get('enc')
+if (keystring != null) {
+	keypass = keystring;
+	document.getElementById("result").innerHTML = keystring;
+}
+if (dectxt != null) {
+	msg =  CryptoJS.Rabbit.decrypt(dectxt, keypass).toString(CryptoJS.enc.Utf8);
+	document.getElementById("msg").value = msg;
+}
+if (enctxt != null) {
+	msg =  CryptoJS.Rabbit.encrypt(enctxt, keypass);
+	document.getElementById("msg").value = msg;
+}
+	
+function reset() {
+	document.getElementById("msg").innerHTML = "";
+}
 
 function definekey() {
 	if (typeof keypass == 'undefined') {
