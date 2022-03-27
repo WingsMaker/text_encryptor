@@ -1,6 +1,6 @@
 # text_encryptor
 
-[Text Encryption](https://wingsmaker.github.io/crypto/crypto.html)
+[Text Encryption](https://wingsmaker.github.io/Github/crypto.html)
 
 
 Wrote my own webapp for text encryption such that you can share a QR code of the encryption key.
