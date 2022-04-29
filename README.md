@@ -25,3 +25,9 @@ How to install?
 - just open the html file using your internet browser.
 
 ![image](https://user-images.githubusercontent.com/32192638/122661253-e0c41080-d1ba-11eb-83e8-1b0d10a4da1a.png)
+
+# file_encryptor
+
+Encrypt/Decrypt a file offline using AES-ECB algorithm via Excel Macro file "encryption.xlsm"
+
+![image](https://user-images.githubusercontent.com/32192638/166081295-4f28207c-8b73-429f-9720-c97e51559b44.png)
