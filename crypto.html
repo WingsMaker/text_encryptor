@@ -65,27 +65,34 @@ function definekey() {
 		keypass = keypass.replace("</b>","<b>").split("<b>")[1];
 	}
 	var txt = prompt("Enter key pass code:",keypass);
-		keypass = "<b>" + txt + "</b>"
-		document.getElementById("result").innerHTML = keypass;
+	if (txt == null) txt = "";
+	if (txt == "") {
+		keypass = "";
+		document.getElementById("result").innerHTML = "";
+		alert("The passphrase key cannot be empty.");
+	} else {
+		keypass = txt;
+		document.getElementById("result").innerHTML = "<b>" + txt + "</b>";
+	}
 }
 
 function encryption() {
 	msg = document.getElementById('msg').value;
 	if (msg=="") {
-	alert("There is nothing to encrypt.");
-return;
-}
-if (typeof keypass == 'undefined') {
-	keypass = "";
-}
-if (keypass=="") {
-	keypass = document.getElementById("result").innerHTML;
-	keypass = keypass.replace("</b>","<b>").split("<b>")[1];
-}
-if (keypass=="") {
-	alert("Please load the passphrase file!");
-return;
-}
+		document.write("There is nothing to encrypt.");
+		return;
+	}
+	if (typeof keypass == 'undefined') {
+		keypass = "";
+	}
+	if (keypass=="") {
+		keypass = document.getElementById("result").innerHTML;
+		keypass = keypass.replace("</b>","<b>").split("<b>")[1];
+	}
+	if (keypass==null) {
+		alert("Please define the passphrase key");
+		return;
+	}
 	codedString =  CryptoJS.Rabbit.encrypt(msg, keypass);
 	document.getElementById("msg").value = codedString;
 }
@@ -93,8 +100,8 @@ return;
 function decryption() {
 	msg = document.getElementById('msg').value;
 	if (msg=="") {
-		alert("There is nothing to decrypt.");
-	return;
+		document.write("There is nothing to decrypt.");
+		return;
 	}		  
 	if (typeof keypass == 'undefined') {
 		keypass = "";
@@ -103,9 +110,9 @@ function decryption() {
 		keypass = document.getElementById("result").innerHTML;
 		keypass = keypass.replace("</b>","<b>").split("<b>")[1];
 	}
-	if (keypass=="") {
-		alert("Please load the passphrase file!");
-	return;
+	if (keypass==null) {
+		alert("Please define the passphrase key");
+		return;
 	}
 	codedString =  CryptoJS.Rabbit.decrypt(msg, keypass).toString(CryptoJS.enc.Utf8);
 	document.getElementById("msg").value = codedString;
