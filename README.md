@@ -26,6 +26,8 @@ How to install?
 
 ![image](https://user-images.githubusercontent.com/32192638/122661253-e0c41080-d1ba-11eb-83e8-1b0d10a4da1a.png)
 
+[More encrytion online](https://encode-decode.com/)
+
 # file_encryptor
 
 Encrypt/Decrypt a file offline using AES-ECB algorithm via Excel Macro file "encryption.xlsm"
