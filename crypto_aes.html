@@ -12,8 +12,9 @@
 <body>
 <div id="html">
 <h3><a id="a-title" href="https://wingsmaker.github.io/Github/Index.html">WingsMaker</a></h3>
-<h1>Text Encryption</h1>
+<h1>Text Encryption AES-256-CBC</h1>
 <br>
+<a href="https://encode-decode.com">More tools</a>
 <div id="header"></div>	
 <form>
 <textarea id='msg' name="Message" rows="12" cols="80" valign="top" style="font-size:12px; border:solid 1px orange;"></textarea>
@@ -70,8 +71,9 @@ function definekey() {
 	var txt = prompt("Enter key pass code:",keypass);
 	if (txt == null) txt = "";
 	if (txt == "") {
-		keypass = "WingsMaker";
-		document.getElementById("result").innerHTML = "<b>WingsMaker</b>";
+		keypass = "";
+		document.getElementById("result").innerHTML = "";
+		alert("The passphrase key cannot be empty.");
 	} else {
 		keypass = txt;
 		document.getElementById("result").innerHTML = "<b>" + txt + "</b>";
@@ -91,8 +93,8 @@ function encryption() {
 		keypass = document.getElementById("result").innerHTML;
 		keypass = keypass.replace("</b>","<b>").split("<b>")[1];
 	}
-	if (keypass=="") {
-		alert("Please load the passphrase file!");
+	if (keypass==null) {
+		alert("Please define the passphrase key");
 		return;
 	}
 	var encrypted = CryptoJS.AES.encrypt(msg, keypass);
@@ -113,9 +115,9 @@ function decryption() {
 		keypass = document.getElementById("result").innerHTML;
 		keypass = keypass.replace("</b>","<b>").split("<b>")[1];
 	}
-	if (keypass=="") {
-		alert("Please load the passphrase file!");
-	return;
+	if (keypass==null) {
+		alert("Please define the passphrase key");
+		return;
 	}
 	codedString =  CryptoJS.AES.decrypt(msg, keypass).toString(CryptoJS.enc.Utf8);
 	document.getElementById("msg").value = codedString;
