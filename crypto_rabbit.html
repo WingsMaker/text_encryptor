@@ -15,6 +15,7 @@
 <h1>Text Encryption Crypto-Rabbit</h1>
 <br>
 <a href="https://encode-decode.com">More tools</a>
+<input type="file" id="fileinput" />
 <div id="header"></div>	
 <form>
 <textarea id='msg' name="Message" rows="12" cols="80" valign="top" style="font-size:12px; border:solid 1px orange;"></textarea>
@@ -54,6 +55,7 @@ if (enctxt != null) {
 	msg =  CryptoJS.Rabbit.encrypt(msg, keypass);
 	document.getElementById("html").innerHTML = msg;
 }
+document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
 
 function reset() {
 	document.getElementById("msg").innerHTML = "";
@@ -120,6 +122,17 @@ function decryption() {
 	codedString =  CryptoJS.Rabbit.decrypt(msg, keypass).toString(CryptoJS.enc.Utf8);
 	document.getElementById("msg").value = codedString;
 }
+function readSingleFile(evt) {
+	var f = evt.target.files[0]; 
+	if (f) {
+		var r = new FileReader();
+		r.onload = function(e) { 
+			document.getElementById('msg').value = e.target.result
+	  }
+		r.readAsText(f);
+	} else { 
+		alert("Failed to load file");
+	}
+}
 </script>
-
 </html>
