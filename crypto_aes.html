@@ -12,9 +12,11 @@
 <body>
 <div id="html">
 <h3><a id="a-title" href="https://wingsmaker.github.io/Github/Index.html">WingsMaker</a></h3>
-<h1>Text Encryption AES-256-CBC</h1>
+<h1>AES-256-CBC online encryption tool</h1>
 <br>
 <a href="https://encode-decode.com">More tools</a>
+<br>
+<input type="file" id="fileinput" />
 <div id="header"></div>	
 <form>
 <textarea id='msg' name="Message" rows="12" cols="80" valign="top" style="font-size:12px; border:solid 1px orange;"></textarea>
@@ -25,6 +27,7 @@
 <input type="button" onClick="encryption()" value="Encrypt"/>
 <input type="button" onClick="decryption()" value="Decrypt"/>
 <input type="button" onClick="definekey()" value="Keypass"/>
+<input type="button" onClick="url_encode()" value="EncodeURI"/>
 <br />
 </form>
 <div>
@@ -55,6 +58,7 @@ if (enctxt != null) {
 	msg = encrypted.toString();
 	document.getElementById("html").innerHTML = msg;
 }
+document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
 
 function reset() {
 	document.getElementById("msg").innerHTML = "";
@@ -122,6 +126,27 @@ function decryption() {
 	codedString =  CryptoJS.AES.decrypt(msg, keypass).toString(CryptoJS.enc.Utf8);
 	document.getElementById("msg").value = codedString;
 }
-</script>
 
+function url_encode() {
+	msg = document.getElementById('msg').value;
+	if (msg != "") {
+		document.getElementById('msg').value = encodeURIComponent(msg);
+	}
+}
+
+function readSingleFile(evt) {
+	var f = evt.target.files[0]; 
+	if (f) {
+		var r = new FileReader();
+		r.onload = function(e) { 
+			document.getElementById('msg').value = e.target.result
+	  }
+		r.readAsText(f);
+	} else { 
+		alert("Failed to load file");
+	}
+}
+
+
+</script>
 </html>
