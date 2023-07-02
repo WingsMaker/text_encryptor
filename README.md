@@ -26,4 +26,10 @@ How to install?
 
 ![image](https://user-images.githubusercontent.com/32192638/122661253-e0c41080-d1ba-11eb-83e8-1b0d10a4da1a.png)
 
-[More encrytion online](https://encode-decode.com/)
+[Other encrytion online](https://encode-decode.com/)
+
+
+More :
+Excel Macro doing AES encryption 
+
+https://github.com/WingsMaker/excel_aes
